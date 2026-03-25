@@ -39,11 +39,11 @@ export default function Home() {
         <h1 style={{ color: 'var(--green)', margin: 0, fontSize: '28px' }}>Hendrick Scheifer</h1>
         <h2 style={{ color: 'var(--mauve)', margin: 0, fontSize: '16px', fontWeight: 'normal', opacity: 0.9, marginBottom: '16px' }}>Fullstack Developer</h2>
 
-        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '90px' }}>Stack</span><span>React 19 / Ant Design</span></div>
-        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '90px' }}>Experience</span><span>5+ years</span></div>
-        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '90px' }}>Location</span><span>Remote</span></div>
-        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '90px' }}>Focus</span><span>Web Apps, UI/UX</span></div>
-        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '90px' }}>Theme</span><span>Dark Mode</span></div>
+        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '120px' }}>Main Languages</span><span>TypeScript, Python</span></div>
+        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '120px' }}>Main Techs</span><span>React, Node.js, PostgreSQL, Django, Docker</span></div>
+        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '120px' }}>Focus</span><span>Web Apps, IoT Platforms, Automation</span></div>
+        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '120px' }}>Experience</span><span>3+ years</span></div>
+        <div style={{ display: 'flex', gap: '16px' }}><span style={{ color: 'var(--blue)', fontWeight: 'bold', width: '120px' }}>Location</span><span>Remote / Campo Mourão, Brazil</span></div>
 
         {/* Color Palette Accents */}
         <div style={{ display: 'flex', gap: '0', marginTop: '32px' }}>
