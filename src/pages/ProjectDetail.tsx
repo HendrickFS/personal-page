@@ -99,6 +99,7 @@ export default function ProjectDetail() {
             .markdown-body ul, .markdown-body ol { padding-left: 24px; margin-bottom: 16px; }
             .markdown-body li { margin-bottom: 8px; }
             .markdown-body blockquote { border-left: 4px solid var(--surface2); margin: 0; padding-left: 16px; color: var(--surface2); }
+            .markdown-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 24px 0; max-height: 500px; object-fit: contain; }
           `}
         </style>
         <div className="markdown-body">

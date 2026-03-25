@@ -21,33 +21,38 @@ function parseMD(rawText: string) {
 export default function Projects() {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Dynamically import all .md files in the content/projects directory
     const mdFiles = import.meta.glob('../content/projects/*.md', { query: '?raw', import: 'default' });
     
     const loadProjects = async () => {
-      const loadedProjects = [];
-      for (const path in mdFiles) {
-        const rawContent = await mdFiles[path]() as string;
-        const { metadata } = parseMD(rawContent);
+      try {
+        const paths = Object.keys(mdFiles);
+        const loadedProjects = await Promise.all(
+          paths.map(async (path) => {
+            const rawContent = (await mdFiles[path]()) as string;
+            const { metadata } = parseMD(rawContent);
+            const filename = path.split('/').pop()?.replace('.md', '');
+            
+            return {
+              key: metadata.id || filename,
+              name: metadata.title || 'Untitled Project',
+              tech: metadata.tech || 'Various',
+              description: metadata.description || 'No description provided.',
+              date: metadata.date || ''
+            };
+          })
+        );
         
-        // Extract filename without extension to use as fallback ID
-        const filename = path.split('/').pop()?.replace('.md', '');
-        
-        loadedProjects.push({
-          key: metadata.id || filename,
-          name: metadata.title || 'Untitled Project',
-          tech: metadata.tech || 'Various',
-          description: metadata.description || 'No description provided.',
-          date: metadata.date || ''
-        });
+        loadedProjects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        setProjects(loadedProjects);
+      } catch (error) {
+        console.error("Failed to load projects", error);
+      } finally {
+        setLoading(false);
       }
-      
-      // Sort by date (descending)
-      loadedProjects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      
-      setProjects(loadedProjects);
     };
 
     loadProjects();
@@ -73,6 +78,7 @@ export default function Projects() {
       </style>
       <div className="projects-table">
         <Table 
+          loading={loading}
           dataSource={projects} 
           columns={columns} 
           pagination={false} 
